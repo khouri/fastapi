@@ -77,6 +77,7 @@ http://127.0.0.1:8000/redoc
 http://127.0.0.1:8000/docs
 
 
+teste da chave rsa
 curl -X 'PUT' \
   'http://127.0.0.1:8000/todo/1' \
   -H 'accept: application/json' \
