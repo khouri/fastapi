@@ -259,3 +259,7 @@ curl -X 'POST' \
 
 
 db.collection('test').find([])
+
+
+# how to configure .env:
+DATABASE_URL=mongodb://localhost:27017/test
