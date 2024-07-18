@@ -111,7 +111,151 @@ curl -X 'POST' \
 }'
 
 
+-- testing planer app
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signup' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "fastapi@packt.com",
+"password": "Stro0ng!",
+"username": "FastPackt"
+}'
+
+curl -v -X 'POST' \
+'http://0.0.0.0:8080/user/signin' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "fastapi@packt.com",
+"password": "Stro0ng!"
+}'
+
+
+-- CH 05 planer
+
+curl -X 'GET' \
+'http://0.0.0.0:8080/event/' \
+-H 'accept: application/json'
 
 
 
-testeo Dir
+
+# Sobre MongoDB
+Install mongosh:
+```shell
+brew install mongosh
+```
+
+imagem docker do mongoDB:
+```shell
+docker pull mongodb/mongodb-community-server:latest
+```
+
+run the image as a container
+```shell
+docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
+```
+
+
+mongosh "mongodb+srv://YOUR_CLUSTER_NAME.YOUR_HASH.mongodb.net/" --apiVersion YOUR_API_VERSION --username YOUR_USERNAME
+
+
+show databases
+
+
+mongosh "mongodb://localhost:27017"
+
+show collections
+show tables
+db.getCollectionNames()
+
+
+mongo --quiet --eval  "printjson(db.adminCommand('listDatabases'))"
+
+
+Awsome ressources about sqlalchemy:
+https://github.com/dahlia/awesome-sqlalchemy
+
+
+python generators:
+https://www.kdnuggets.com/2023/02/getting-started-python-generators.html#:~:text=Under%20the%20hood%2C%20the%20generator,generator%20function%20suspends%20execution%20temporarily.
+
+
+https://towardsdatascience.com/cpython-internals-how-do-generators-work-ba1c4405b4bc
+
+https://medium.com/@anuj_shah/creating-custom-data-generator-for-training-deep-learning-models-part-1-5c62b20cff26
+
+https://machinelearningsite.com/python-generators-in-machine-learning/
+
+
+https://realpython.com/introduction-to-python-generators/
+
+
+https://www.alura.com.br/artigos/conhecendo-os-geradores-no-python?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=164240702375&hsa_ad=703853654617&hsa_src=g&hsa_tgt=dsa-2276348409543&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAjwy8i0BhAkEiwAdFaeGPRD0zNgNAX8jGoromU9jFaLQDaGodY2iD4zxhlc1_BZcXkiQ2xjAxoCvkIQAvD_BwE
+
+
+
+curl -X 'POST' \
+'http://0.0.0.0:8080/event/new' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"title": "FastAPI Book Launch",
+"image": "https://linktomyimage.com/image.png",
+"description": "We will be discussing the contents of the FastAPI book in this event. Ensure to come with your own copy to win gifts!",
+"tags": [
+"python",
+"fastapi",
+"book",
+"launch"
+],
+"location": "Google Meet"
+}'
+
+curl -X 'GET' \
+'http://0.0.0.0:8080/event/' \
+-H 'accept: application/json'
+
+curl -X 'GET' \
+'http://0.0.0.0:8080/event/6698657e5a8ea1965e39af83' \
+-H 'accept: application/json'
+
+
+curl -X 'PUT' \
+'http://0.0.0.0:8080/event/669861814457690e4bad4ccd' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{"location": "Hybrid"}'
+
+curl -X 'DELETE' \
+'http://0.0.0.0:8080/event/669861814457690e4bad4ccd' \
+-H 'accept: application/json'
+
+
+
+
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signup' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "fastapi@packt.com",
+"password": "strong!!!",
+"events": []
+}'
+
+
+--signin method
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signin' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "fastapi@packt.com",
+"password": "strong!!!"
+}'
+
+
+
+db.collection('test').find([])
