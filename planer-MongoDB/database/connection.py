@@ -9,6 +9,7 @@ from pydantic import BaseSettings, BaseModel
 
 class Settings(BaseSettings):
     DATABASE_URL : Optional[str] = None
+    SECRET_KEY: Optional[str] = None
 
     async def initialize_database(self):
         client = AsyncIOMotorClient(self.DATABASE_URL)
@@ -29,7 +30,7 @@ class Database:
         await document.create()
         return(None)
 
-    async def get(self, id: PydanticObjectId ) -> Any:
+    async def get(self, id: PydanticObjectId) -> Any:
         doc = await self.model.get(id)
         if doc:
             return(doc)

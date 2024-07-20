@@ -258,8 +258,39 @@ curl -X 'POST' \
 
 
 
-db.collection('test').find([])
+db.users('test').find([])
 
 
 # how to configure .env:
 DATABASE_URL=mongodb://localhost:27017/test
+
+
+mongosh "mongodb://localhost:27017"
+show collections
+db.users.find({})
+
+
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signup' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "reader@packt.com",
+"password": "exemplary"
+}'
+
+
+
+-- curl to test after the Oauth:
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signin' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'grant_type=&username=reader%40packt.com&password=exemplary&scope=&client_id=&client_secret='
+
+
+
+
+docker-compose up -d
+
+docker-compose down
