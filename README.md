@@ -291,6 +291,55 @@ curl -X 'POST' \
 
 
 
+calculadora:
+curl -X GET "http://localhost:8080/calculadora01/?number_A=10&number_B=2"
+
+
+
 docker-compose up -d
 
 docker-compose down
+
+curl -X POST "http://localhost:8080/calculadora01/teste_post" \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+    "number_A": "1000",
+    "number_B": "2"
+    }'
+
+curl -X 'POST' \
+'http://0.0.0.0:8080/user/signup' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"email": "reader@packt.com",
+"password": "exemplary"
+}'
+
+
+curl -X POST "http://localhost:8080/calculadora01/teste_post" \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+    "number_A": 1000,
+    "number_B": 2
+    }'
+
+
+Path and query parameters
+In the previous section, we learned what models are and how they are used to validate
+request bodies. In this section, you’ll learn what path and query parameters are, the role
+they play in routing, and how to use them.
+
+Path parameters
+Path parameters are parameters included in an API route to identify resources. These
+parameters serve as an identifier and, sometimes, a bridge to enable further operations in
+a web application.
+We currently have routes for adding a todo and retrieving all the todos in our todo
+application. Let’s create a new route for retrieving a single todo by appending the todo’s ID
+as a path parameter.
+
+
+
+
